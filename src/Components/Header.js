@@ -1,26 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "react-router-dom/Link";
 import StarfieldAnimation from "react-starfield-animation";
 
 const Header = () => {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") == ""
+      ? "light"
+      : localStorage.getItem("theme") == "dark"
+      ? "light"
+      : "dark"
+  );
 
-  const handleClick = (e) => {
-    let theme = localStorage.getItem("theme");
-    console.log(theme);
+  useEffect(() => {
     if (theme == "light" || theme == "") {
       document.body.setAttribute("class", "dark");
       localStorage.setItem("theme", "dark");
-      setTheme("dark");
     } else {
       document.body.removeAttribute("class");
       localStorage.setItem("theme", "light");
+    }
+  }, [theme]);
+
+  const handleClick = (e) => {
+    if (theme == "light") {
+      setTheme("dark");
+    } else {
       setTheme("light");
     }
   };
   return (
     <div>
-      {theme == "dark" && (
+      {theme == "light" && (
         <StarfieldAnimation
           numParticles={20}
           alphaFactor={0.5}
@@ -114,7 +124,7 @@ const Header = () => {
                   onClick={handleClick}
                 />
                 <span>
-                  {theme == "light" ? (
+                  {theme == "dark" ? (
                     <svg
                       aria-hidden="true"
                       focusable="false"
