@@ -65,11 +65,11 @@ class App extends Component {
           <div className="layout-module--container--2TGku">
             <Switch>
               <Route path="/" component={Home} exact />
-              <Route path="/PortfolioInReact" component={Home} />
               <Route path="/projects" component={Projects} />
               <Route path="/education" component={Education} />
               <Route path="/blog" component={Blog} />
               <Route path="/contact" component={Contact} />
+              <Route component={Home} />
             </Switch>
             <Footer />
           </div>
