@@ -31,7 +31,7 @@ const Home = () => {
               </div>
             </h1>
             <h2 className="index-module--title--1LAhw">
-              I'm Osama
+              I'm Osama&nbsp;
               <span
                 role="img"
                 aria-label="wave"
